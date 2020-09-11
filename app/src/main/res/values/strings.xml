@@ -11,4 +11,5 @@
     <string name="email">Email</string>
     <string name="github_link">GitHub Link</string>
     <string name="todo">TODO</string>
+    <string name="project_submissio">Project Submission</string>
 </resources>
