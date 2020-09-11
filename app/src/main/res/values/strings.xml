@@ -6,4 +6,9 @@
     <string name="learning_leaders">Learning Leaders</string>
     <string name="hours_completed">Hours</string>
     <string name="score_iq">Score</string>
+    <string name="developer_name">Name</string>
+    <string name="developer_surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="github_link">GitHub Link</string>
+    <string name="todo">TODO</string>
 </resources>
