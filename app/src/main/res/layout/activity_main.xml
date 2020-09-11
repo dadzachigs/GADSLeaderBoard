@@ -6,38 +6,29 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <Toolbar
-
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+    <include
+        layout="@layout/gadsproject"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingPrefix"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/black"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="@android:color/black"
+        app:tabTextColor="@color/gold"
 
         >
 
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabChats"
+            android:id="@+id/tabLearning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/learning_leaders" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabStatus"
+            android:id="@+id/tabIQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/iq_leaders" />

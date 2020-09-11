@@ -1,12 +1,17 @@
 package com.darlington.chigumbu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
 
 import com.darlington.chigumbu.adapters.PageAdapter;
 import com.google.android.material.tabs.TabItem;
@@ -16,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     PageAdapter pageAdapter;
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final Toolbar toolbar = findViewById(R.id.toolbar);
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            toolbar.setTitle(getResources().getString(R.string.app_name));
-        }*/
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
+
         final TabLayout tabLayout = findViewById(R.id.tablayout);
-        TabItem tabChats = findViewById(R.id.tabChats);
-        TabItem tabStatus = findViewById(R.id.tabStatus);
-       // TabItem tabCalls = findViewById(R.id.tabCalls);
+        TabItem tabChats = findViewById(R.id.tabLearning);
+        TabItem tabStatus = findViewById(R.id.tabIQ);
+
         final ViewPager viewPager = findViewById(R.id.viewPager);
 
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
@@ -44,32 +49,25 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 1) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            R.color.black));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            R.color.black));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                R.color.colorAccent));
+                                R.color.black));
                     }
                 } else if (tab.getPosition() == 2) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            android.R.color.darker_gray));
+                            android.R.color.black));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            android.R.color.darker_gray));
+                            android.R.color.black));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                android.R.color.darker_gray));
+                                android.R.color.black));
                     }
-                } /*else {
-                    toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimary));
-                    tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimary));
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                R.color.colorPrimaryDark));
-                    }
-                }*/
+                }
+
+
             }
 
             @Override
@@ -83,6 +81,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+     getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id==R.id.submit3){
+            Intent intent = new Intent(MainActivity.this, GoogleForm.class);
+            startActivity(intent);
+            return true;
+        } else if (id==R.id.submit4){
+            Intent intent = new Intent(MainActivity.this, GoogleForm.class);
+            startActivity(intent);
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }
