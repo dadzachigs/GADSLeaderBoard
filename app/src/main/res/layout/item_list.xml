@@ -39,13 +39,13 @@
                 android:layout_alignParentStart="true"
                 android:ellipsize="end"
                 android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.216"
+                app:layout_constraintHorizontal_bias="0.771"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintVertical_bias="0.885" />
 
             <TextView
                 android:id="@+id/country_of_leader"
@@ -57,10 +57,10 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toTopOf="@+id/name_of_leader"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.384"
+                app:layout_constraintHorizontal_bias="0.466"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.47" />
+                app:layout_constraintVertical_bias="0.615" />
 
             <TextView
                 android:id="@+id/textView"
@@ -69,9 +69,9 @@
                 android:text="@string/hours_completed"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.566"
-                app:layout_constraintStart_toEndOf="@+id/name_of_leader"
+                app:layout_constraintEnd_toStartOf="@+id/name_of_leader"
+                app:layout_constraintHorizontal_bias="0.663"
+                app:layout_constraintStart_toEndOf="@+id/hours"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.885" />
 
@@ -79,13 +79,13 @@
                 android:id="@+id/hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:text=""
+                android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.885" />
+                app:layout_constraintHorizontal_bias="0.107"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/country_of_leader"
+                app:layout_constraintVertical_bias="0.619" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

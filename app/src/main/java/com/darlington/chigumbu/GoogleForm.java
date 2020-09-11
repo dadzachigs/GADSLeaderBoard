@@ -1,10 +1,12 @@
 package com.darlington.chigumbu;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.darlington.chigumbu.googleform.Constants;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +34,7 @@ public class GoogleForm extends AppCompatActivity {
 
         EditText edtName, edSurname, edEmail, edGitlink;
         ImageView submit;
+        ImageButton back;
         RequestQueue queue;
 
         @Override
@@ -48,10 +52,18 @@ public class GoogleForm extends AppCompatActivity {
             edSurname =  findViewById(R.id.edtSurname);
             edEmail =  findViewById(R.id.edtEmail);
             edGitlink =  findViewById(R.id.github_link);
+            back =  findViewById(R.id.imageButton);
             submit= findViewById(R.id.imageView_submit_form);
 
             // Initializing Queue for Volley
             queue = Volley.newRequestQueue(getApplicationContext());
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GoogleForm.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,7 +71,7 @@ public class GoogleForm extends AppCompatActivity {
                     if (edtName.getText().toString().trim().length() > 0 && edSurname.getText().toString().trim().length()>0 && edEmail.getText().toString().trim().length() > 0 && edGitlink.getText().toString().trim().length()> 0) {
                         postData(edtName.getText().toString().trim(), edSurname.getText().toString().trim(),edEmail.getText().toString().trim(),edGitlink.getText().toString().trim());
                     } else {
-                       // Snackbar.make(view, "Required Fields Missing", Snackbar.LENGTH_LONG).show();
+                       Snackbar.make(view, "Required Fields Missing", Snackbar.LENGTH_LONG).show();
                     }
                 }
             });
@@ -78,13 +90,13 @@ public class GoogleForm extends AppCompatActivity {
                         public void onResponse(String response) {
                             Log.d("TAG", "Response: " + response);
                             if (response.length() > 0) {
-                              //  Snackbar.make(fab, "Successfully Posted", Snackbar.LENGTH_LONG).show();
+                               Snackbar.make(submit, "Successfully Posted", Snackbar.LENGTH_LONG).show();
+                                edEmail.setText(null);
                                 edtName.setText(null);
                                 edSurname.setText(null);
-                                edEmail.setText(null);
                                 edGitlink.setText(null);
                             } else {
-                               // Snackbar.make(fab, "Try Again", Snackbar.LENGTH_LONG).show();
+                                Snackbar.make(submit, "Try Again", Snackbar.LENGTH_LONG).show();
                             }
                             progressDialog.dismiss();
                         }
@@ -93,14 +105,14 @@ public class GoogleForm extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.dismiss();
-                   // Snackbar.make(fab, "Error while Posting Data", Snackbar.LENGTH_LONG).show();
+                  Snackbar.make(submit, "Error while Posting Data", Snackbar.LENGTH_LONG).show();
                 }
             }) {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
-                    params.put(Constants.firstName, firstName);
                     params.put(Constants.address, address);
+                    params.put(Constants.firstName, firstName);
                     params.put(Constants.surname, surname);
                     params.put(Constants.projectLink, projectLink);
                     return params;
